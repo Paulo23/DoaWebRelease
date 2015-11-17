@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form id="formInfoInst">
+
+			<h2>Dados da doação</h2>
+			<br />
+			<h:panelGrid>
+				<p:messages id="messagesInst" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2" styleClass="panelgrid">
+
+				<p:outputLabel id="nomeDoador" value="Nome do doador: " />
+				<p:outputLabel id="razao" value="#{listDoacReal.nomeDoador}" />
+
+				<p:outputLabel id="end" value="Endereço: " />
+				<p:outputLabel id="ende" value="#{listDoacReal.endDoador}" />
+
+				<p:outputLabel id="tele" value="Telefone: " />
+				<p:outputLabel id="tel" value="#{listDoacReal.telefoneDoador}" />
+
+				<p:outputLabel id="obs" value="Observações: " />
+				<p:outputLabel id="desc" value="#{listDoacReal.obsDoDoaodr}" />
+				
+				<p:outputLabel id="status" value="Recebido: "/>
+				<p:selectBooleanCheckbox value="#{listDoacReal.recebido}" />
+
+			</h:panelGrid>
+
+
+
+			<br />
+			<h:panelGrid columns="2" styleClass="panelgrid">
+				<p:commandButton value="Voltar" action="#{listDoacReal.voltar()}"
+					ajax="false" />
+				<p:commandButton value="Atualizar" action="#{listDoacReal.atualizar()}"
+					ajax="false" />
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

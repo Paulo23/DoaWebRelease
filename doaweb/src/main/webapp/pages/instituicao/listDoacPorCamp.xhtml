@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListaDoacPorCamp">
+			<h2>Doações por campanha</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+
+			<!-- Tabela campanhas -->
+
+			<h:panelGrid id="gridTipoDoa" columns="3" styleClass="panelgrid">
+
+				<p:dataTable id="listDoacPorCamp" value="#{listCampanha.ltDoacoes}"
+					var="doacao" paginator="true" paginatorPosition="bottom" rows="5"
+					emptyMessage="Nenhum resultado encontrado">
+
+					
+					<p:column headerText="Data da Doação" styleClass="text-center" width="10%">
+						<h:outputText value="#{doacao.dataDoacao}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Status" styleClass="text-center" width="13%">
+						<h:outputText value="#{doacao.status}" />
+					</p:column>
+					<p:column headerText="Tipo" styleClass="text-center" width="12%">
+						<h:outputText value="#{doacao.tipoDeDoacao}" />
+					</p:column>
+					<p:column id="clVisualizar" style="width: 43px; text-align: center" 
+							resizable="false" headerText="Visualizar Doação">
+							<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
+								title="Doacões"
+								action="#{listDoacReal.preparaInforDoDoador(doacao)}"/>
+						</p:column>
+					
+
+				</p:dataTable>
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+

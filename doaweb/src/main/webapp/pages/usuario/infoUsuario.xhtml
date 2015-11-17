@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form id="formInfoUsuario">
+
+
+
+			<!-- PainelGrid DOADORES -->
+
+			<h:panelGrid id="gridDoador" columns="2" styleClass="panelgrid"
+				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
+
+				<h2>Perfil do Doador</h2>
+				<br />
+				<h:panelGrid>
+					<p:messages id="messagesDoad" showDetail="true" autoUpdate="true"
+						closable="true" />
+				</h:panelGrid>
+
+				<p:outputLabel id="nomeLb" value="Nome: " />
+				<p:outputLabel id="nome" value="#{login.doador.nome}" />
+				<p:outputLabel id="cpfLb" value="CPF: " />
+				<p:outputLabel id="cpf" value="#{login.doador.cpf}" />
+				<p:outputLabel id="enderecoLb" value="Endereço: " />
+				<p:outputLabel id="endDoador" value="#{login.doador.endereco}" />
+				<p:outputLabel id="telefoneLb" value="Telefone: " />
+				<p:outputLabel id="telDoador" value="#{login.doador.telDoador}" />
+				<p:outputLabel id="nascLb" value="Data de Nascimento: " />
+				<p:outputLabel id="nasc" value="#{login.doador.dataNascimento}" />
+
+			</h:panelGrid>
+
+			<!-- PainelGrid INSTITUICAO -->
+
+			<h:panelGrid id="gridInstituicao" columns="2" styleClass="panelgrid"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+
+				<h2>Perfil da Instituição</h2>
+				<br />
+				<h:panelGrid>
+					<p:messages id="messagesInst" showDetail="true" autoUpdate="true"
+						closable="true" />
+				</h:panelGrid>
+
+				<p:outputLabel id="razaoLb" value="Razão Social: " />
+				<p:outputLabel id="razao" value="#{login.instituicao.razaoSocial}" />
+				<p:outputLabel id="cnpjLb" value="CNPJ: " />
+				<p:outputLabel id="cnpj" value="#{login.instituicao.cnpj}" />
+				<p:outputLabel id="endLb" value="Endereço: " />
+				<p:outputLabel id="end" value="#{login.instituicao.endereco}" />
+				<p:outputLabel id="telLb" value="Telefone: " />
+				<p:outputLabel id="tel" value="#{login.instituicao.telefone}" />
+				<p:outputLabel id="descLb" value="Descrição: " />
+				<p:outputLabel id="desc" value="#{login.instituicao.desc}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="gridSeparator" columns="1" styleClass="panelgrid"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<br />
+				<p:outputLabel id="separator" value="Dados Bancários " />
+				<br />
+			</h:panelGrid>
+
+			<h:panelGrid id="gridInstituicaoBanco" columns="2"
+				styleClass="panelgrid"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+
+				<p:outputLabel id="bancoLb" value="Banco: " />
+				<p:outputLabel id="nomeBanco" value="#{login.instituicao.nomeBanco}" />
+				<p:outputLabel id="opLb" value="Operação: " />
+				<p:outputLabel id="operacao" value="#{login.instituicao.operacao}" />
+				<p:outputLabel id="agLb" value="Agência: " />
+				<p:outputLabel id="agencia" value="#{login.instituicao.agencia}" />
+				<p:outputLabel id="contaLb" value="Conta: " />
+				<p:outputLabel id="conta" value="#{login.instituicao.conta}" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

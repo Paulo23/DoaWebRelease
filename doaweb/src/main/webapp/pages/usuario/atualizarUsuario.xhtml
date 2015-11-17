@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formAtualizaUsuario">
+			<f:validateBean>
+				<h2>Atualizar Usuário</h2>
+				<p:separator />
+				<br />
+
+				<h:panelGrid id="gridDoador" columns="4" styleClass="panelgrid"
+					rendered="#{cadUsuario.tipoUsuario == 'DOADOR'}">
+
+					<p:outputLabel value="Endereço: " />
+					<font color="red">*</font>
+					<p:inputText id="end" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="end" />
+
+					<p:outputLabel value="Telefone: " />
+					<font color="red">*</font>
+					<p:inputText id="tel" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="tel" />
+
+					<p:outputLabel value="Email: " />
+					<font color="red">*</font>
+					<p:inputText id="email" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="email" />
+
+					<br />
+					<h:panelGrid columns="3" styleClass="panelgrid">
+						<p:commandButton value="Voltar"
+							action="#{atualizaUsuario.preparaListar}" ajax="false"
+							immediate="true" />
+						<p:commandButton value="Atualizar"
+							action="#{atualizaUsuario.limparDados}" ajax="false" />
+						<p:commandButton value="Limpar"
+							actionListener="#{atualizaUsuario.limparDados}" update="@form"
+							type="reset" />
+					</h:panelGrid>
+				</h:panelGrid>
+
+				<h:panelGrid id="gridInstituicao" columns="4" styleClass="panelgrid"
+					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
+
+					<p:outputLabel value="Endereço: " />
+					<font color="red">*</font>
+					<p:inputText id="endInst" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="end" />
+
+					<p:outputLabel value="Telefone: " />
+					<font color="red">*</font>
+					<p:inputText id="telInst" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="tel" />
+
+					<p:outputLabel value="Email: " />
+					<font color="red">*</font>
+					<p:inputText id="emailInst" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="email" />
+
+					<p:outputLabel value="Descrição " />
+					<font color="red">*</font>
+					<p:inputText id="descricaoInst" value="" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="descricao" />
+
+					<br />
+					<h:panelGrid columns="3" styleClass="panelgrid">
+						<p:commandButton value="Voltar"
+							action="#{atualizaUsuario.preparaListar}" ajax="false"
+							immediate="true" />
+						<p:commandButton value="Atualizar"
+							action="#{atualizaUsuario.limparDados}" ajax="false" />
+						<p:commandButton value="Limpar"
+							actionListener="#{atualizaUsuario.limparDados}" update="@form"
+							type="reset" />
+					</h:panelGrid>
+				</h:panelGrid>
+
+
+			</f:validateBean>
+		</h:form>
+	</ui:define>
+</ui:composition>

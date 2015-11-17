@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formInfCampanhas">
+			<h2>Informações sobre a campanha</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<p:outputLabel>
+
+				<!-- Painel Grid Valores -->
+
+				<h:panelGrid columns="2" styleClass="panelgrid">
+
+					<p:outputLabel id="nomeInst" value="Nome da Instituição: " />
+					<p:outputLabel id="nome" value="#{realizarDoac.nomeInstituicao}" />
+					<p:outputLabel id="tipoDoac" value="Tipo de Campanha: " />
+					<p:outputLabel id="tip" value="#{realizarDoac.tipo}" />
+					<p:outputLabel id="descricao" value="Descrição: " />
+					<p:outputLabel id="desc" value="#{realizarDoac.descricao}" />
+
+					<!-- DADOS DO BANCO -->
+
+					<p:outputLabel id="nomeBancoInst" value="Nome do Banco: "
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="nbi" value="#{realizarDoac.nomeBanco}"
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="agBancoInst" value="Agência: "
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="abi" value="#{realizarDoac.ag}"
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="contaBancoInst" value="Conta: "
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="cbi" value="#{realizarDoac.conta}"
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="opBancoInst" value="Nome do Banco "
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<p:outputLabel id="obi" value="#{realizarDoac.op}"
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+					<br/>
+					<p:outputLabel value="Informações extras: " />
+					
+					<p:inputTextarea value="#{realizarDoac.obs}" rows="4" cols="50"
+						counter="display" maxlength="250"
+						counterTemplate="{0} characters remaining." placeholder="Informe aqui detalhes da sua doação, ou informações que a instituição deverá saber." />
+					<h:outputText id="display" />
+
+				</h:panelGrid>
+
+				<!-- Painel Grid Botões -->
+
+				<h:panelGrid columns="2" styleClass="panelgrid">
+					<p:commandButton value="Realizar doação"
+						action="#{realizarDoac.doar()}" ajax="false" />
+					<p:commandButton value="Voltar" action="#{realizarDoac.voltar()}"
+						ajax="false" immediate="true" />
+				</h:panelGrid>
+
+			</p:outputLabel>
+		</h:form>
+	</ui:define>
+</ui:composition>

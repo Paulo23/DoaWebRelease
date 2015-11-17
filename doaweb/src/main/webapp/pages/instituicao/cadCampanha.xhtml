@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formCadCampanha">
+			<f:validateBean>
+				<h2>Nova Campanha</h2>
+				<p:separator />
+				<br />
+				<h:panelGrid>
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
+				</h:panelGrid>
+
+				<h:panelGrid id="gridDocao" columns="4" styleClass="panelgrid">
+
+					<!-- Tipo de doação -->
+
+					<p:outputLabel for="tipo" value="Tipo de doação:" />
+					<font color="red">*</font>
+					<p:selectOneMenu id="tipo" value="#{cadCampanha.tipo}"
+						style="width:125px">
+						<f:selectItems value="#{cadCampanha.tipoDoacaoValores}" var="g"
+							itemValue="#{g}" itemLabel="#{g.label}" />
+					</p:selectOneMenu>
+
+					<!-- Datas -->
+					<p:outputLabel for="dataInicioCampanhas" value="Data de início" />
+					<font color="red">*</font>
+					<p:calendar id="dataInicioCampanhas"
+						value="#{cadCampanha.dataInicioCampanhas}" mask="99/99/9999"
+						showOn="button" pattern="dd/MM/yyyy" disabled="true" />
+					<br />
+					<p:outputLabel for="dataTerminoCampanhas"
+						value="Data de encerramento:" />
+					<font color="red">*</font>
+					<p:calendar id="dataTerminoCampanhas"
+						value="#{cadCampanha.dataTerminoCampanhas}" mask="99/99/9999"
+						showOn="button" pattern="dd/MM/yyyy" />
+
+				</h:panelGrid>
+
+				<!-- InputText Descrição -->
+
+				<h:panelGrid id="gridDocaoDescr" columns="4" styleClass="panelgrid">
+					<p:outputLabel value="Descrição: " />
+					<font color="red">*</font>
+					<p:inputTextarea value="#{cadCampanha.descricao}" rows="4"
+						cols="50" counter="display" maxlength="250"
+						counterTemplate="{0} characters remaining."
+						placeholder="Breve descrição sobre a campanha" />
+					<h:outputText id="display" />
+				</h:panelGrid>
+
+				<!-- Painel do Botão(Salvar) -->
+
+				<br />
+				<h:panelGrid columns="1" styleClass="panelgrid">
+					<p:commandButton value="Salvar" action="#{cadCampanha.salvar}"
+						ajax="false" />
+				</h:panelGrid>
+
+			</f:validateBean>
+		</h:form>
+	</ui:define>
+</ui:composition>

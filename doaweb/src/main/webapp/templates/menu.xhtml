@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:form>
+		<h:panelGroup id="sidebar" layout="block">
+			<h1>Menu</h1>
+		</h:panelGroup>
+		<p:panelMenu style="width:300px">
+
+			<p:submenu label="Início"
+				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
+				<p:menuitem value="Página Inícial"
+					action="/pages/usuario/infoUsuario.xhtml" />
+			</p:submenu>
+			<p:submenu label="Doacões"
+				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
+				<p:menuitem value="Realizar Doação"
+					action="#{realizarDoac.listarTodasCampanhas}" />
+				<p:menuitem value="Minhas Doações"
+					action="#{listDoacReal.listarMinhasDoacRealizadas}" />
+			</p:submenu>
+			<p:submenu label="Perfil Doador"
+				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
+				<p:menuitem value="Editar Perfil"
+					action="/pages/doador/atualizarDoador.xhtml" />
+				<p:menuitem value="Excluir Conta"
+					action="/pages/doador/excDoador.xhtml" />
+				<p:menuitem value="Sair da Conta" action="#{segurancaTO.logout}" />
+			</p:submenu>
+
+			<p:submenu label="Início"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<p:menuitem value="Página Inícial"
+					action="/pages/usuario/infoUsuario.xhtml" />
+			</p:submenu>
+			<p:submenu label="Campanha"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<p:menuitem value="Nova Campanha"
+					action="#{cadCampanha.preparaSalvar()}" />
+				<p:menuitem value="Minhas Campanhas"
+					action="#{listCampanha.listarMinhasCampanhas}" />
+			</p:submenu>
+			<p:submenu label="Perfil da Instituição"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<p:menuitem value="Editar Perfil"
+					action="/pages/instituicao/atualizarInstituicao.xhtml" />
+				<p:menuitem value="Excluir Conta"
+					action="/pages/usuario/excUsuario.xhtml" />
+				<p:menuitem value="Sair da Conta" action="#{segurancaTO.logout}" />
+			</p:submenu>
+		</p:panelMenu>
+
+	</h:form>
+</f:view>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formInfoUsuario">
+			<h2>Deseja realmente excluir esta conta?</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<!-- Painel do Botões(Sim, Não) -->
+
+				<br />
+				<h:panelGrid columns="2" styleClass="panelgrid">
+					<p:commandButton value="Sim"
+						action="#{atualizaUsuario.excluir()}" ajax="false"
+						immediate="true" />
+					<p:commandButton value="Não" action="#{cadUsuario.voltar()}"
+						ajax="false" />
+				</h:panelGrid>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

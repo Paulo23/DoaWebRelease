@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListCampanhas">
+			<h2>Realizar Doações</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<p:outputLabel>
+
+				<!-- Painel Tabela campanhas -->
+
+				<h:panelGrid columns="3" styleClass="panelgrid">
+
+					<p:dataTable id="realizarDoac"
+						value="#{realizarDoac.ltTodasCampanhas}" var="campanha"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="Nenhum resultado encontrado">
+
+						<p:column headerText="Status da Campanha" styleClass="text-center">
+							<h:outputText value="#{campanha.status}" />
+						</p:column>
+						<p:column headerText="Fim da Campanha" styleClass="text-center">
+							<h:outputText value="#{campanha.dataTerminoCampanhas}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Tipo de Campanha" styleClass="text-center">
+							<h:outputText value="#{campanha.tipo}" />
+						</p:column>
+
+						<p:column id="clDoar" style="width: 55px; text-align: center"
+							resizable="false" headerText="Doar">
+							<p:commandButton id="btDoar" icon="fa fa-plus"
+								title="Realizar Doação"
+								action="#{realizarDoac.preparaDoar(campanha)}" />
+						</p:column>
+
+
+					</p:dataTable>
+
+
+
+				</h:panelGrid>
+			</p:outputLabel>
+		</h:form>
+	</ui:define>
+</ui:composition>

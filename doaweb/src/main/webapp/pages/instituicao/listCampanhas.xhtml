@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListCampanhas">
+			<h2>Minhas de Campanhas</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<p:outputLabel id="dataInicioCampanhas" value="Filtrar por data de início: " />
+			<p:calendar value="#{listCampanha.dataInicioFiltro}"
+				mask="99/99/9999" />
+			<h:commandButton value="Filtrar"
+				action="#{listCampanha.listarMinhasCampanhasPorFiltro}" />
+			<!-- Tabela campanhas -->
+
+			<h:panelGrid columns="3" styleClass="panelgrid">
+
+				<p:dataTable id="listaCampanhas" value="#{listCampanha.ltCampanhas}"
+					var="campanhas" paginator="true" paginatorPosition="bottom"
+					rows="5" emptyMessage="Nenhum resultado encontrado">
+
+					<p:column headerText="Tipo de Campanha" styleClass="text-center"
+						width="20%">
+						<h:outputText value="#{campanhas.tipo}" />
+					</p:column>
+					<p:column headerText="Início da Campanha" styleClass="text-center"
+						width="18%">
+						<h:outputText value="#{campanhas.dataInicioCampanhas}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Fim da Campanha" styleClass="text-center"
+						width="18%">
+						<h:outputText value="#{campanhas.dataTerminoCampanhas}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Status" styleClass="text-center" width="7%">
+						<h:outputText value="#{campanhas.status}" />
+					</p:column>
+
+
+					<p:column id="clExcluir" style="width: 43px; text-align: center"
+						resizable="false" headerText="Excluir Campanha">
+						<p:commandButton id="btExcluir" icon="ui-icon-closethick"
+							title="Excluir"
+							actionListener="#{listCampanha.excluir(campanhas)}"
+							update="listaCampanhas"
+							onclick="if (!confirm('Excluir campanha?')) return false" />
+					</p:column>
+
+					<p:column id="clVisualizar" style="width: 43px; text-align: center"
+						resizable="false" headerText="Visualizar Doações">
+						<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
+							title="Doacões"
+							action="#{listCampanha.listarDoacaoesNaCampanha(campanhas)}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
