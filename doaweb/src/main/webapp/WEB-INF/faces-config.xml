@@ -32,7 +32,7 @@
 			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/instituicao/listDoacPorCamp.xhtml</from-view-id>
 		<navigation-case>
@@ -40,7 +40,7 @@
 			<to-view-id>/pages/instituicao/infoSobreDoacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/instituicao/infoSobreDoacao.xhtml</from-view-id>
 		<navigation-case>
@@ -56,8 +56,8 @@
 			<to-view-id>/pages/instituicao/infoSobreDoacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
-	
+
+
 
 	<navigation-rule>
 		<from-view-id>/pages/instituicao/listCampanhas.xhtml</from-view-id>
@@ -80,6 +80,22 @@
 		<navigation-case>
 			<from-outcome>voltar</from-outcome>
 			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/instituicao/atualizarInstituicao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fracasso</from-outcome>
+			<to-view-id>/pages/instituicao/atualizarInstituicao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -138,6 +154,10 @@
 		<navigation-case>
 			<from-outcome>listarCampDoad</from-outcome>
 			<to-view-id>/pages/doador/realDoacao.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>atualizaInst</from-outcome>
+			<to-view-id>/pages/instituicao/atualizarInstituicao.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>sair</from-outcome>

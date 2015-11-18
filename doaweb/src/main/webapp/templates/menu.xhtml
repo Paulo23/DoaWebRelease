@@ -49,7 +49,7 @@
 			<p:submenu label="Perfil da Instituição"
 				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
 				<p:menuitem value="Editar Perfil"
-					action="/pages/instituicao/atualizarInstituicao.xhtml" />
+					action="#{atualizaUsuario.preparaAtualizarInstituicao()}" />
 				<p:menuitem value="Excluir Conta"
 					action="/pages/usuario/excUsuario.xhtml" />
 				<p:menuitem value="Sair da Conta" action="#{segurancaTO.logout}" />

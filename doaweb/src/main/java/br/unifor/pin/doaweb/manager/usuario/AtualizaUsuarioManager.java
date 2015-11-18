@@ -14,6 +14,7 @@ import br.unifor.pin.doaweb.exceptions.BOException;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
+
 /**
  * @author patrick.cunha
  * 
@@ -25,24 +26,56 @@ public class AtualizaUsuarioManager {
 
 	@Autowired
 	private UsuarioBO usuariosBO;
-	
+
 	@Autowired
 	private SegurancaTO segurancaTO;
-	private Usuarios usuarioSelecionado;
-	
-	
-	public String preparaAtualizar() {
-		usuarioSelecionado = this.segurancaTO.getUsuario();
 
-		return Navigation.ATUALIZA;
-	}
+	private Usuarios usuarioSelecionado;
+
 	
-	public String preparaListar(){
+	
+	//DADOS INSTITUIÇÃO
+	private String end;
+	private String telefone;
+	private String email;
+	private String desc;
+
+	public String preparaListar() {
 		this.limparDados();
 		return Navigation.SUCESSO;
 	}
-	
-	public String excluir(){
+
+	public String preparaAtualizarInstituicao() {
+		setUsuarioSelecionado(this.segurancaTO.getUsuario());
+
+		return Navigation.ATUALIZAINST;
+	}
+
+	public String atualizarInst() {
+		Instituicoes instituicoes = (Instituicoes) usuarioSelecionado;
+
+		instituicoes.setEndereco(getEnd());
+		instituicoes.setTelefone(getTelefone());
+		instituicoes.setEmail(getEmail());
+		instituicoes.setDesc(getDesc());
+		usuariosBO.atualizar(instituicoes);
+
+		return Navigation.SUCESSO;
+	}
+
+	public void limparDados() {
+		this.end = "";
+		this.desc = "";
+		this.email = "";
+		this.telefone = "";
+	}
+
+	public String voltar() {
+		limparDados();
+		return Navigation.VOLTAR;
+	}
+
+	public String excluir() {
 		try {
 			usuariosBO.excluirUsuario(this.segurancaTO.getUsuario());
 			MessagesUtils.info("Conta excluída com sucesso.");
@@ -51,16 +84,52 @@ public class AtualizaUsuarioManager {
 			e.printStackTrace();
 			return Navigation.FRACASSO;
 		}
-		
+
 		return Navigation.EXCLUIR;
 	}
 
-	
-	public void limparDados(){
+	/*
+	 * GETTS AND SETTS
+	 */
 
+	public Usuarios getUsuarioSelecionado() {
+		return usuarioSelecionado;
 	}
 
+	public void setUsuarioSelecionado(Usuarios usuarioSelecionado) {
+		this.usuarioSelecionado = usuarioSelecionado;
+	}
 
-	
-	
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
 }

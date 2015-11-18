@@ -23,5 +23,8 @@ public class Navigation {
 	
 	public static final String CADASTROCAMP = "cadastroCamp";
 	public static final String DADOSDADOAC = "dadosDaDoac";
+	
+	public static final String ATUALIZAINST = "atualizaInst";
+
 
 }
