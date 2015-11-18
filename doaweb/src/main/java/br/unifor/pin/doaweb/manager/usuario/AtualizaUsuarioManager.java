@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.dao.UsuariosDAO;
+import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.exceptions.BOException;
@@ -59,6 +60,17 @@ public class AtualizaUsuarioManager {
 		instituicoes.setEmail(getEmail());
 		instituicoes.setDesc(getDesc());
 		usuariosBO.atualizar(instituicoes);
+
+		return Navigation.SUCESSO;
+	}
+	
+	public String atualizarDoador() {
+		Doadores doadores = (Doadores) usuarioSelecionado;
+
+		doadores.setEndereco(getEnd());
+		doadores.setTelDoador(getTelefone());
+		doadores.setEmail(getEmail());
+		usuariosBO.atualizar(doadores);
 
 		return Navigation.SUCESSO;
 	}
