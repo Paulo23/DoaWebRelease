@@ -28,7 +28,7 @@
 			<p:submenu label="Perfil Doador"
 				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
 				<p:menuitem value="Editar Perfil"
-					action="/pages/doador/atualizarDoador.xhtml" />
+					action="#{atualizaUsuario.preparaAtualizarDoador()}" />
 				<p:menuitem value="Excluir Conta"
 					action="/pages/doador/excDoador.xhtml" />
 				<p:menuitem value="Sair da Conta" action="#{segurancaTO.logout}" />

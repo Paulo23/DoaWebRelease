@@ -19,9 +19,8 @@
 
 				<h:panelGrid columns="3" styleClass="panelgrid">
 
-					<p:dataTable id="listaDoacoes"
-						value="#{listDoacReal.ltDoacoes}" var="doacoes"
-						paginator="true" paginatorPosition="bottom" rows="5"
+					<p:dataTable id="listaDoacoes" value="#{listDoacReal.ltDoacoes}"
+						var="doacoes" paginator="true" paginatorPosition="bottom" rows="5"
 						emptyMessage="Nenhum resultado encontrado">
 
 						<p:column headerText="Data da Doação" styleClass="text-center">
@@ -31,6 +30,9 @@
 						</p:column>
 						<p:column headerText="Tipo de Campanha" styleClass="text-center">
 							<h:outputText value="#{doacoes.tipoDeDoacao}" />
+						</p:column>
+						<p:column headerText="Status da Doação" styleClass="text-center">
+							<h:outputText value="#{doacoes.status}" />
 						</p:column>
 
 

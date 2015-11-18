@@ -46,13 +46,19 @@ public class AtualizaUsuarioManager {
 		return Navigation.SUCESSO;
 	}
 
-	public String preparaAtualizarInstituicao() {
+	public String preparaAtualizarInstituicao(){
 		setUsuarioSelecionado(this.segurancaTO.getUsuario());
 
 		return Navigation.ATUALIZAINST;
 	}
+	
+	public String preparaAtualizarDoador(){
+		setUsuarioSelecionado(this.segurancaTO.getUsuario());
 
-	public String atualizarInst() {
+		return Navigation.ATUALIZADOA;
+	}
+
+	public String atualizarInst(){
 		Instituicoes instituicoes = (Instituicoes) usuarioSelecionado;
 
 		instituicoes.setEndereco(getEnd());
@@ -64,7 +70,7 @@ public class AtualizaUsuarioManager {
 		return Navigation.SUCESSO;
 	}
 	
-	public String atualizarDoador() {
+	public String atualizarDoador(){
 		Doadores doadores = (Doadores) usuarioSelecionado;
 
 		doadores.setEndereco(getEnd());

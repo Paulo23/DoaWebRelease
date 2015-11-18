@@ -25,6 +25,8 @@ public class Navigation {
 	public static final String DADOSDADOAC = "dadosDaDoac";
 	
 	public static final String ATUALIZAINST = "atualizaInst";
+	public static final String ATUALIZADOA = "atualizaDoa";
+
 
 
 }

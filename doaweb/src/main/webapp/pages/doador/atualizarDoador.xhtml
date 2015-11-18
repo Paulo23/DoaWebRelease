@@ -16,19 +16,19 @@
 
 					<p:outputLabel value="Endereço: " />
 					<font color="red">*</font>
-					<p:inputText id="end" value="" required="true"
+					<p:inputText id="end" value="#{atualizaUsuario.end}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="end" />
 
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>
-					<p:inputText id="tel" value="" required="true"
+					<p:inputText id="tel" value="#{atualizaUsuario.telefone}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="tel" />
 
 					<p:outputLabel value="Email: " />
 					<font color="red">*</font>
-					<p:inputText id="email" value="" required="true"
+					<p:inputText id="email" value="#{atualizaUsuario.email}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="email" />
 
@@ -40,9 +40,9 @@
 						action="#{atualizaUsuario.preparaListar}" ajax="false"
 						immediate="true" />
 					<p:commandButton value="Atualizar"
-						action="#{atualizaUsuario.limparDados}" ajax="false" />
+						action="#{atualizaUsuario.atualizarDoador()}" ajax="false" />
 					<p:commandButton value="Limpar"
-						actionListener="#{atualizaUsuario.limparDados}" update="@form"
+						actionListener="#{atualizaUsuario.limparDados()}" update="@form"
 						type="reset" />
 				</h:panelGrid>
 			</f:validateBean>
