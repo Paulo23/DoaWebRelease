@@ -33,9 +33,7 @@ public class AtualizaUsuarioManager {
 
 	private Usuarios usuarioSelecionado;
 
-	
-	
-	//DADOS INSTITUIÇÃO
+	// DADOS INSTITUIÇÃO
 	private String end;
 	private String telefone;
 	private String email;
@@ -46,36 +44,63 @@ public class AtualizaUsuarioManager {
 		return Navigation.SUCESSO;
 	}
 
-	public String preparaAtualizarInstituicao(){
+	public String preparaAtualizarInstituicao() {
 		setUsuarioSelecionado(this.segurancaTO.getUsuario());
 
 		return Navigation.ATUALIZAINST;
 	}
-	
-	public String preparaAtualizarDoador(){
+
+	public String preparaAtualizarDoador() {
 		setUsuarioSelecionado(this.segurancaTO.getUsuario());
 
 		return Navigation.ATUALIZADOA;
 	}
 
-	public String atualizarInst(){
+	public String atualizarInst() {
 		Instituicoes instituicoes = (Instituicoes) usuarioSelecionado;
 
-		instituicoes.setEndereco(getEnd());
-		instituicoes.setTelefone(getTelefone());
-		instituicoes.setEmail(getEmail());
-		instituicoes.setDesc(getDesc());
+		if (getEnd().length() == 0) {
+			instituicoes.setEndereco(usuarioSelecionado.getEndereco());
+		} else {
+			instituicoes.setEndereco(getEnd());
+			limparDados();
+		}
+
+		if (getTelefone().length() == 0) {
+			instituicoes.setTelefone(((Instituicoes) usuarioSelecionado)
+					.getTelefone());
+		} else {
+			instituicoes.setTelefone(getTelefone());
+			limparDados();
+		}
+		if (getDesc().length() == 0) {
+			instituicoes.setDesc(((Instituicoes) usuarioSelecionado).getDesc());
+		} else {
+			instituicoes.setDesc(getDesc());
+			limparDados();
+		}
 		usuariosBO.atualizar(instituicoes);
 
 		return Navigation.SUCESSO;
 	}
-	
-	public String atualizarDoador(){
+
+	public String atualizarDoador() {
 		Doadores doadores = (Doadores) usuarioSelecionado;
 
-		doadores.setEndereco(getEnd());
-		doadores.setTelDoador(getTelefone());
-		doadores.setEmail(getEmail());
+		if (getEnd().length() == 0) {
+			doadores.setEndereco(usuarioSelecionado.getEndereco());
+		} else {
+			doadores.setEndereco(getEnd());
+			limparDados();
+		}
+
+		if (getTelefone().length() == 0) {
+			doadores.setTelDoador(((Doadores) usuarioSelecionado)
+					.getTelDoador());
+		} else {
+			doadores.setTelDoador(getTelefone());
+			limparDados();
+		}
 		usuariosBO.atualizar(doadores);
 
 		return Navigation.SUCESSO;

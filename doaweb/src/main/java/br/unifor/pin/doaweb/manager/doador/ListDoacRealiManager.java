@@ -79,6 +79,11 @@ public class ListDoacRealiManager {
 	}
 
 	public String voltar() {
+		if (doacao.getStatus().equals(StatusDoacao.RECEBIDA)) {
+			setRecebido(true);
+		} else {
+			setRecebido(false);
+		}
 		return Navigation.VOLTAR;
 	}
 

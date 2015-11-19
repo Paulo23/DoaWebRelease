@@ -12,25 +12,15 @@
 				<p:separator />
 				<br />
 				
-				<h:panelGrid id="gridDoador" columns="4" styleClass="panelgrid">
+				<h:panelGrid id="gridDoador" columns="3" styleClass="panelgrid">
 
 					<p:outputLabel value="Endereço: " />
-					<font color="red">*</font>
-					<p:inputText id="end" value="#{atualizaUsuario.end}" required="true"
-						requiredMessage="Campo Obrigatório" />
+					<p:inputText id="end" value="#{atualizaUsuario.end}"  />
 					<p:message for="end" />
 
 					<p:outputLabel value="Telefone: " />
-					<font color="red">*</font>
-					<p:inputText id="tel" value="#{atualizaUsuario.telefone}" required="true"
-						requiredMessage="Campo Obrigatório" />
+					<p:inputText id="tel" value="#{atualizaUsuario.telefone}" />
 					<p:message for="tel" />
-
-					<p:outputLabel value="Email: " />
-					<font color="red">*</font>
-					<p:inputText id="email" value="#{atualizaUsuario.email}" required="true"
-						requiredMessage="Campo Obrigatório" />
-					<p:message for="email" />
 
 				</h:panelGrid>
 				
