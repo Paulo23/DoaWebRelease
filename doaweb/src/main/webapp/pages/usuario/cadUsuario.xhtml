@@ -113,11 +113,14 @@
 
 				<h:panelGrid columns="1" styleClass="panelgrid"
 					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
-					<p:outputLabel value="Descrição: " ><font color="red">*</font></p:outputLabel>
-					
+
+					<p:outputLabel value="Descrição: ">
+						<font color="red">*</font>
+					</p:outputLabel>
 					<p:inputTextarea value="#{cadUsuario.descricao}" rows="4" cols="45"
 						counter="display" maxlength="250"
-						counterTemplate="{0} characters remaining." placeholder="Um breve resumo sobre a instituição." />
+						counterTemplate="{0} characters remaining."
+						placeholder="Um breve resumo sobre a instituição." />
 					<h:outputText id="display" />
 				</h:panelGrid>
 

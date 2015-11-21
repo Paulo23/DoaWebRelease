@@ -80,7 +80,7 @@ public class CampanhaBO {
 	public void setStatusCampanhas() {
 		ArrayList<Campanhas> campanhas = (ArrayList<Campanhas>) campanhasDAO.buscaTodasCampanhas();
 		for (Campanhas campanha : campanhas) {
-			if(new Date().after(campanha.getDataTerminoCampanhas())){
+			if(new Date().after(campanha.getDataTerminoCampanhas()) || campanha.getStatus().equals(StatusCampanha.INATIVA)){
 				campanha.setStatus(StatusCampanha.INATIVA);
 				campanhasDAO.atualizar(campanha);
 			} 

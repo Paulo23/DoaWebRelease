@@ -40,7 +40,7 @@ public class CadCampanhaManager {
 		return Navigation.CADASTROCAMP;
 	}
 
-	public void salvar() {
+	public String salvar() {
 		Campanhas campanha = new Campanhas();
 		campanha.setDataInicioCampanhas(new Date());
 		campanha.setDataTerminoCampanhas(getDataTerminoCampanhas());
@@ -63,6 +63,8 @@ public class CadCampanhaManager {
 			MessagesUtils
 					.error("Data de ENCERRAMENTO deve ser posterior a data ATUAL, insira uma data correta!");
 		}
+		
+		return Navigation.SUCESSO;
 
 	}
 

@@ -75,7 +75,7 @@ public class RealDoacaoManager {
 
 	}
 
-	public void doar() {
+	public String doar() {
 		Doacao doacao = new Doacao();
 
 		doacao.setCampanha(getCamps());
@@ -92,6 +92,7 @@ public class RealDoacaoManager {
 		} catch (Exception e) {
 			MessagesUtils.error(e.getMessage());
 		}
+		return Navigation.SUCESSO;
 	}
 
 	public String voltar() {
