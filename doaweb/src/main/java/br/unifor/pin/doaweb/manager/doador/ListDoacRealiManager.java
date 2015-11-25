@@ -66,6 +66,12 @@ public class ListDoacRealiManager {
 		if(doacao.getStatus().equals(StatusDoacao.PENDENTE)){
 			statusVisualizada(doacao);		
 		}
+		
+		if(doacao.getStatus().equals(StatusDoacao.PENDENTE)|| doacao.getStatus().equals(StatusDoacao.VISUALIZADA)){
+			setRecebido(false);
+		} else if (doacao.getStatus().equals(StatusDoacao.RECEBIDA)) {
+			setRecebido(true);
+		}
 		return Navigation.SUCESSO;
 	}
 

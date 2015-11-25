@@ -1,5 +1,6 @@
 package br.unifor.pin.doaweb.manager.doador;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -80,7 +81,7 @@ public class RealDoacaoManager {
 
 		doacao.setCampanha(getCamps());
 		doacao.setDoador((Doadores) segurancaTO.getUsuario());
-		doacao.setDataDoacao(getCamps().getDataInicioCampanhas());
+		doacao.setDataDoacao(new Date());
 		doacao.setTipoDeDoacao(getCamps().getTipo());
 		doacao.setInformacoes(getObs());
 		doacao.setStatus(StatusDoacao.PENDENTE);
