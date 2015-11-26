@@ -41,6 +41,11 @@ public class DoacaoBO {
 	public List<Doacao> buscarDoacPorCamp(Campanhas camp) {
 		return doacaoDAO.buscaDoacaoPorCampanha(camp);
 	}
+	
+	@Loggable(enable = false)
+	public List<Doacao> buscaDoacaoPorStatus(StatusDoacao doacao) {
+		return doacaoDAO.buscaDoacaoPorStatus(doacao);
+	}
 
 	// Alterar status da doação
 	public void alteraStatusDoacao(Doacao doacao, StatusDoacao statusDoacao) {

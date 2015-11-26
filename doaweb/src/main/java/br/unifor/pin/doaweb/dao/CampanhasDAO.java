@@ -60,6 +60,7 @@ public class CampanhasDAO {
 		return query.getResultList();
 	}
 	
+	// Busca todas as campanhas ativas
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscarCampanhasAtivas() {
 		String jpql = "select c from Campanhas c where c.status = 0";
@@ -78,6 +79,7 @@ public class CampanhasDAO {
 		return (List<Campanhas>) query.getResultList();
 	}
 	
+	//Filtra campanha por tipo(Alimentos, Dinheiro, Roupas)
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaCampanhasPorTipo(TipoDoacao doacao) {
 		String jpql = "select c from Campanhas c where c.tipo = :doacao";
