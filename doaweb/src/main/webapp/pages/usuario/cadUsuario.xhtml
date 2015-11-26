@@ -68,12 +68,14 @@
 					<font color="red">*</font>
 					<p:inputMask id="cpf" value="#{cadUsuario.cpf}"
 						mask="999.999.999-99" required="true"
-						requiredMessage="Campo Obrigatório" />
+						requiredMessage="Campo Obrigatório" >
+						<f:validator validatorId="validators.CPFValidator" />
+						</p:inputMask>
 					<p:message for="cpf" />
 
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>
-					<p:inputText id="telDoador" value="#{cadUsuario.telDoador}"
+					<p:inputMask id="telDoador" value="#{cadUsuario.telDoador}" mask="(99) 99999-9999"
 						required="true" requiredMessage="Campo Obrigatório" />
 					<p:message for="telDoador" />
 
@@ -100,12 +102,14 @@
 					<font color="red">*</font>
 					<p:inputMask id="cnpj" value="#{cadUsuario.cnpj}"
 						mask="99.999.999/9999-99" required="true"
-						requiredMessage="Campo Obrigatório" />
+						requiredMessage="Campo Obrigatório" >
+						<f:validator validatorId="validators.CNPJValidator" />
+						</p:inputMask>
 					<p:message for="cnpj" />
 
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>
-					<p:inputText id="tel" value="#{cadUsuario.tel}" required="true"
+					<p:inputMask id="tel" value="#{cadUsuario.tel}" required="true" mask="(99) 99999-9999"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="tel" />
 

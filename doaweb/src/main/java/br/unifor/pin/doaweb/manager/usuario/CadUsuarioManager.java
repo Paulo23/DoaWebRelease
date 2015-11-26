@@ -104,6 +104,7 @@ public class CadUsuarioManager {
 	}
 
 	public void limpaDados() {
+		this.tipoUsuario = null;
 		this.email = "";
 		this.senha = "";
 		this.endereco = "";
