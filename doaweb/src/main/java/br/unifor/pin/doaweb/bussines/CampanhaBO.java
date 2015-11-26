@@ -16,6 +16,7 @@ import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.enums.StatusCampanha;
+import br.unifor.pin.doaweb.enums.TipoDoacao;
 import br.unifor.pin.doaweb.enums.TipoUsuario;
 
 @Component
@@ -52,10 +53,21 @@ public class CampanhaBO {
 		return campanhasDAO.buscaCampanhasPorInstituicaoData(instituicao, data);
 	}
 	
+	public List<Campanhas> buscaCampanhasPorTipo(
+			TipoDoacao doacao) {
+		return campanhasDAO.buscaCampanhasPorTipo(doacao);
+	}
+	
 	//Todas as campanhas do banco
 	@Loggable(enable = false)
 	public List<Campanhas> buscarTodasCamp() {
 		List<Campanhas> campanhas = campanhasDAO.buscaTodasCampanhas();
+		return campanhas;
+	}
+	
+	@Loggable(enable = false)
+	public List<Campanhas> buscarCampanhasAtivas() {
+		List<Campanhas> campanhas = campanhasDAO.buscarCampanhasAtivas();
 		return campanhas;
 	}
 

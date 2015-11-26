@@ -28,7 +28,9 @@
 					<p:outputLabel id="descricao" value="Descrição: " />
 					<p:outputLabel id="desc" value="#{realizarDoac.descricao}" />
 
-					<!-- DADOS DO BANCO -->
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" styleClass="panelgrid">
 
 					<p:outputLabel id="nomeBancoInst" value="Nome do Banco: "
 						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
@@ -46,14 +48,16 @@
 						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
 					<p:outputLabel id="obi" value="#{realizarDoac.op}"
 						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
-					<br/>
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" styleClass="panelgrid">
+
 					<p:outputLabel value="Informações extras: " />
-					
 					<p:inputTextarea value="#{realizarDoac.obs}" rows="4" cols="50"
 						counter="display" maxlength="250"
-						counterTemplate="{0} characters remaining." placeholder="Informe aqui detalhes da sua doação, ou informações que a instituição deverá saber." />
+						counterTemplate="{0} characters remaining."
+						placeholder="Informe aqui detalhes da sua doação, ou informações que a instituição deverá saber." />
 					<h:outputText id="display" />
-
 				</h:panelGrid>
 
 				<!-- Painel Grid Botões -->

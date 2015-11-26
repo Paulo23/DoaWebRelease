@@ -52,7 +52,7 @@ public class RealDoacaoManager {
 
 	// Todas as campanhas do banco
 	public String listarTodasCampanhas() {
-		ltTodasCampanhas = campanhaBO.buscarTodasCamp();
+		ltTodasCampanhas = campanhaBO.buscarCampanhasAtivas();
 		return Navigation.LISTCAMPDOAD;
 	}
 
@@ -89,7 +89,7 @@ public class RealDoacaoManager {
 		try {
 			this.doacaoBO.salvar(doacao);
 			limpaDados();
-			MessagesUtils.info("Doação realizada com sucesso");
+			MessagesUtils.info("Intenção de doação enviada com sucesso. A instituição logo entrará em contato.");
 		} catch (Exception e) {
 			MessagesUtils.error(e.getMessage());
 		}
