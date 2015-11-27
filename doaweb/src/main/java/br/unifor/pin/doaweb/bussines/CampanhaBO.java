@@ -70,6 +70,12 @@ public class CampanhaBO {
 		List<Campanhas> campanhas = campanhasDAO.buscarCampanhasAtivas();
 		return campanhas;
 	}
+	
+	@Loggable(enable = false)
+	public List<Campanhas> buscarCampanhasAtivas() {
+		List<Campanhas> campanhas = campanhasDAO.buscarCampanhasAtivas();
+		return campanhas;
+	}
 
 	//Valída a data de termino da campanha
 	public boolean validaDataDeTerminoDeCampanha(Date date) {

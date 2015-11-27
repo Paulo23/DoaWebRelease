@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.enums.StatusDoacao;
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
@@ -39,6 +40,15 @@ public class DoacaoDAO {
 		String jpql = "select u from Doacao u where u.doador = :doador";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("doador", doador);
+		return (List<Doacao>) query.getResultList();
+	}
+	
+	//Busca doações pelo status(Pendente, Visualizada, Recebida)
+	@SuppressWarnings("unchecked")
+	public List<Doacao> buscaDoacaoPorStatus(StatusDoacao doacao) {
+		String jpql = "select u from Doacao u where u.status = :doacao";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("status_doacao", doacao);
 		return (List<Doacao>) query.getResultList();
 	}
 	
