@@ -1,4 +1,4 @@
-body { background-image:url("../../images/background-page.png"); color:#333; }
+body { background-image:url("../../imgs/background-page.png"); color:#333; }
 
 body {
 	margin: 0;
@@ -161,9 +161,16 @@ a {
 	margin: 0 auto;
 }
 
+.imagemlogin{
+	position: absolute; 
+	margin-left: 10%; 
+	margin-top: 3%
+}
+
 .panelgridlogin{
-	margin-left: 530px;
-	margin-top: 90px;
+	position: absolute;
+	margin-left: 36%;
+	margin-top: 6%;
 }
 
 .panelgrid input[type=text], .panelgrid input[type=password] {
