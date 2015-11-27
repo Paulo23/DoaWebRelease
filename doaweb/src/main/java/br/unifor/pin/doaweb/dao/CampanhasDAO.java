@@ -75,8 +75,7 @@ public class CampanhasDAO {
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaCampanhasPorInstituicaoData(Instituicoes instituicao, Date data) {
 		String jpql = "select c from Campanhas c where c.instituicao = :instituicao "
-				+ "and c.dataInicioCampanhas = :data and c.status != :status "
-				+ "order by u.status, u.dataTerminoCampanhas";
+				+ "and c.dataInicioCampanhas = :data and c.status != :status ";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("instituicao", instituicao);
 		query.setParameter("data", data);
