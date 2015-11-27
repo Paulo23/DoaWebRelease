@@ -68,6 +68,16 @@ public class DoacaoDAO {
 		query.setParameter("campanha", campanha);
 		return (List<Doacao>) query.getResultList();
 	}
+	
+	//Busca todas as doações de uma determinada campanha
+		@SuppressWarnings("unchecked")
+		public List<Doacao> buscaDoacaoPorCampanhaEStatus(Campanhas campanha, StatusDoacao doacao) {
+			String jpql = "select u from Doacao u where u.campanha = :campanha and u.status = :doacao";
+			Query query = entityManager.createQuery(jpql);
+			query.setParameter("campanha", campanha);
+			query.setParameter("doacao", doacao);
+			return (List<Doacao>) query.getResultList();
+		}
 
 	//Busca uma determinada doação
 	public Doacao buscaDoacaoPorId(Integer id) {

@@ -15,6 +15,14 @@
 					closable="true" />
 			</h:panelGrid>
 
+			<p:outputLabel for="tipo" value="Status da doação" />
+			<p:selectOneMenu id="tipo" value="#{listCampanha.statusDoacao}"
+				style="width:125px">
+				<f:selectItems value="#{listCampanha.tipoStatusDoacaos}" var="g"
+					itemValue="#{g}" itemLabel="#{g.label}" />
+			</p:selectOneMenu>
+			<h:commandButton value="Filtrar"
+				action="#{listCampanha.listarDoacoesPorStatusCampanha()}" />
 
 			<!-- Tabela campanhas -->
 
@@ -24,8 +32,9 @@
 					var="doacao" paginator="true" paginatorPosition="bottom" rows="5"
 					emptyMessage="Nenhum resultado encontrado">
 
-					
-					<p:column headerText="Data da Doação" styleClass="text-center" width="10%">
+
+					<p:column headerText="Data da Doação" styleClass="text-center"
+						width="10%">
 						<h:outputText value="#{doacao.dataDoacao}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
@@ -36,13 +45,13 @@
 					<p:column headerText="Tipo" styleClass="text-center" width="12%">
 						<h:outputText value="#{doacao.tipoDeDoacao}" />
 					</p:column>
-					<p:column id="clVisualizar" style="width: 43px; text-align: center" 
-							resizable="false" headerText="Visualizar Doação">
-							<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
-								title="Doacões"
-								action="#{listDoacReal.preparaInforDoDoador(doacao)}"/>
-						</p:column>
-					
+					<p:column id="clVisualizar" style="width: 43px; text-align: center"
+						resizable="false" headerText="Visualizar Doação">
+						<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
+							title="Doacões"
+							action="#{listDoacReal.preparaInforDoDoador(doacao)}" />
+					</p:column>
+
 
 				</p:dataTable>
 			</h:panelGrid>

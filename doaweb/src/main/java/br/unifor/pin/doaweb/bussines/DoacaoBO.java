@@ -54,6 +54,11 @@ public class DoacaoBO {
 	}
 	
 	@Loggable(enable = false)
+	public List<Doacao> buscarDoacPorCampEStatus(Campanhas camp, StatusDoacao doacao) {
+		return doacaoDAO.buscaDoacaoPorCampanhaEStatus(camp, doacao);
+	}
+	
+	@Loggable(enable = false)
 	public List<Doacao> buscaDoacaoPorStatus(StatusDoacao doacao) {
 		return doacaoDAO.buscaDoacaoPorStatus(doacao);
 	}

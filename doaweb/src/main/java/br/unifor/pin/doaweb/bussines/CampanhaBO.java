@@ -53,9 +53,15 @@ public class CampanhaBO {
 		return campanhasDAO.buscaCampanhasPorInstituicaoData(instituicao, data);
 	}
 	
+	//Filtro de busca por tipo do Doador
 	public List<Campanhas> buscaCampanhasPorTipo(
 			TipoDoacao doacao) {
 		return campanhasDAO.buscaCampanhasPorTipo(doacao);
+	}
+	
+	public List<Campanhas> buscaCampanhasPorTipoInstiruicao(
+			TipoDoacao doacao) {
+		return campanhasDAO.buscaCampanhasPorTipoInstituicao(doacao);
 	}
 	
 	//Todas as campanhas do banco

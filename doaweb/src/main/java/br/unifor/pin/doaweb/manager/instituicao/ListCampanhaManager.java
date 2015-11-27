@@ -16,6 +16,7 @@ import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.enums.StatusDoacao;
+import br.unifor.pin.doaweb.enums.TipoDoacao;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Navigation;
 
@@ -49,14 +50,22 @@ public class ListCampanhaManager {
 
 	// Lista as campanhas por data de íncio
 	public String listarMinhasCampanhasPorFiltro() {
-		ltCampanhas = campanhaBO.buscaCampanhasPorInstituicaoData(
-				(Instituicoes) segurancaTO.getUsuario(), dataInicioFiltro);
+		ltCampanhas = campanhaBO.buscaCampanhasPorInstituicaoData((Instituicoes) segurancaTO.getUsuario(), dataInicioFiltro);
 		return Navigation.LISTCAMPINST;
+	}
+	
+	public String listarDoacoesPorStatusCampanha(){
+		ltDoacoes = doacaoBO.buscarDoacPorCampEStatus(campanha, statusDoacao);
+		System.out.println("CAMPANHA " + campanha);
+		System.out.println("STATUS " + statusDoacao);
+		System.out.println("DOAÇÕES " + ltDoacoes.size());
+		return Navigation.LISTDOANACAMP;
 	}
 
 	// Lista as doação que a Campanha possui
 	public String listarDoacaoesNaCampanha(Campanhas doaCamp) {
 		ltDoacoes = doacaoBO.buscarDoacPorCamp(doaCamp);
+		setCampanha(doaCamp);
 		return Navigation.LISTDOANACAMP;
 	}
 
@@ -65,6 +74,10 @@ public class ListCampanhaManager {
 		campanhaBO.setStatusCampanhas();
 		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
 		return Navigation.LISTCAMPINST;
+	}
+	
+	public StatusDoacao[] getTipoStatusDoacaos() {
+		return StatusDoacao.values();
 	}
 
 	/*
