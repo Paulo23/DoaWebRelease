@@ -29,13 +29,11 @@
 			<h:panelGrid columns="3" styleClass="panelgridlogin">
 
 				<h:outputLabel value="Email:" />
-				<p:inputText id="email" value="#{login.usuario.email}"
-					required="true" requiredMessage="Campo Obrigatório" />
+				<p:inputText id="email" value="#{login.usuario.email}" />
 				<p:message for="email" />
 
 				<h:outputLabel value="Senha:" />
-				<p:password id="senha" value="#{login.usuario.senha}"
-					required="true" requiredMessage="Campo Obrigatório" />
+				<p:password id="senha" value="#{login.usuario.senha}" />
 				<p:message for="senha" />
 
 				<p:commandButton value="Entrar" action="#{login.loggar}"

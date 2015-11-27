@@ -47,6 +47,9 @@ public class UsuarioBO {
 
 	@Loggable(enable = false)
 	public Usuarios loggar(String email, String senha) throws BOException {
+		if(email.trim().equals("") || senha.trim().equals("")){
+			throw new BOException("Email e/ou senha não informados.");
+		}
 		Usuarios usuario = usuarioDAO.buscarPorEmailSenha(email, senha);
 		if(usuario != null){
 			if(!usuario.isAtivo()){
