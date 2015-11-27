@@ -23,7 +23,7 @@ import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
-@Scope("request")
+@Scope("session")
 @ManagedBean(name = "cadUsuario")
 @Component(value = "cadUsuario")
 public class CadUsuarioManager {
