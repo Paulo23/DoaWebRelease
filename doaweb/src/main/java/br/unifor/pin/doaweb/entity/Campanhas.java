@@ -18,7 +18,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.unifor.pin.doaweb.enums.StatusCampanha;
-import br.unifor.pin.doaweb.enums.StatusDoacao;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 
 @Entity

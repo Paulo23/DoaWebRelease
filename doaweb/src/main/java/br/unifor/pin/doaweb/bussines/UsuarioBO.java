@@ -10,7 +10,6 @@ import br.unifor.pin.doaweb.aspectj.PermitAll;
 import br.unifor.pin.doaweb.dao.DoadoresDAO;
 import br.unifor.pin.doaweb.dao.UsuariosDAO;
 import br.unifor.pin.doaweb.entity.Doadores;
-import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.exceptions.BOException;
 import br.unifor.pin.doaweb.exceptions.DAOException;
