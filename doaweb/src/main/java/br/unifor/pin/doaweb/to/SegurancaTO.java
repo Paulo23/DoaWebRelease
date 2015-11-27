@@ -12,8 +12,7 @@ import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
@@ -24,15 +23,13 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * @author patrick.cunha
  * @since 07/05/2015
  */
-@Scope("session")
-@Service(value = "segurancaTO")
-@ManagedBean(name = "segurancaTO")
 @SessionScoped
+@ManagedBean(name = "segurancaTO")
+@Controller(value = "segurancaTO")
 public class SegurancaTO implements Serializable {
 
 	private static final long serialVersionUID = -9069250861713212366L;
 	private Logger logger = Logger.getLogger(SegurancaTO.class);
-	
 	private Usuarios usuario;
 
 	public boolean isAutenticado() {

@@ -1,7 +1,5 @@
 package br.unifor.pin.doaweb.validators;
 
-import java.util.ResourceBundle;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -16,14 +14,14 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator("validators.CNPJValidator")
 public class CNPJValidator implements Validator {
 	@Override
-	public void validate(FacesContext arg0, UIComponent arg1, Object valorTela) throws ValidatorException {
+	public void validate(FacesContext arg0, UIComponent arg1, Object arg2) throws ValidatorException {
+		String valorTela = String.valueOf(arg2).replace(".", "").replace("-", "").replace("/", "");
 		if (!validaCNPJ(String.valueOf(valorTela))) {
-			FacesMessage message = new FacesMessage();
-			message.setSeverity(FacesMessage.SEVERITY_ERROR);
-			message.setSummary(
-					ResourceBundle.getBundle(FacesContext.getCurrentInstance().getApplication().getMessageBundle())
-							.getString("erro.validacao.cnpj"));
-			throw new ValidatorException(message);
+			FacesMessage msg = 
+					new FacesMessage("Erro:", 
+							"CNPJ inválido");
+				msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			throw new ValidatorException(msg);
 		}
 	}
 

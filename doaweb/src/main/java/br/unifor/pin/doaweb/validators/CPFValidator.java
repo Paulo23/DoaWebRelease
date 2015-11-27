@@ -16,7 +16,8 @@ public class CPFValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object arg2) throws ValidatorException {
-		if (!validaCPF(String.valueOf(arg2))) {
+		String valorTela = String.valueOf(arg2).replace(".", "").replace("-", "");
+		if (!validaCPF(valorTela)) {
 			FacesMessage msg = 
 					new FacesMessage("Erro:", 
 							"CPF inválido");

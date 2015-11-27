@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.CampanhaBO;
@@ -22,7 +21,6 @@ import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
-@Scope("request")
 @ManagedBean(name = "realizarDoac")
 @Component(value = "realizarDoac")
 public class RealDoacaoManager {
@@ -59,21 +57,22 @@ public class RealDoacaoManager {
 	}
 
 	// Dados da instituição
-	public String preparaDoar(Campanhas camp) {
+	public String preparaDoar() {
+		Campanhas camp = campanhas;
 		if (camp.getStatus().equals(StatusCampanha.INATIVA)) {
-		MessagesUtils.error("Campanha Inativa, escolha outra!");
-		return Navigation.FRACASSO;
-		} 
-			nomeInstituicao = camp.getInstituicao().getRazaoSocial();
-			descricao = camp.getDescricao();
-			tipo = camp.getTipo().toString();
+			MessagesUtils.error("Campanha Inativa, escolha outra!");
+			return Navigation.FRACASSO;
+		}
+		nomeInstituicao = camp.getInstituicao().getRazaoSocial();
+		descricao = camp.getDescricao();
+		tipo = camp.getTipo().toString();
 
-			nomeBanco = camp.getInstituicao().getNomeBanco();
-			ag = camp.getInstituicao().getAgencia();
-			op = camp.getInstituicao().getOperacao();
-			conta = camp.getInstituicao().getConta();
+		nomeBanco = camp.getInstituicao().getNomeBanco();
+		ag = camp.getInstituicao().getAgencia();
+		op = camp.getInstituicao().getOperacao();
+		conta = camp.getInstituicao().getConta();
 
-			setCamps(camp);
+		setCamps(camp);
 		return Navigation.SUCESSO;
 
 	}

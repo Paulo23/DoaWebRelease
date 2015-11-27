@@ -38,17 +38,16 @@
 							<h:outputText value="#{campanha.tipo}" />
 						</p:column>
 
-						<p:column id="clDoar" style="width: 55px; text-align: center"
-							resizable="false" headerText="Doar">
-							<p:commandButton id="btDoar" icon="fa fa-plus"
-								title="Realizar Doação"
-								action="#{realizarDoac.preparaDoar(campanha)}" />
+						<p:column style="width: 55px; text-align: center"
+							headerText="Doar">
+							<h:commandButton id="btDoar" value="Doar"
+								action="#{realizarDoac.preparaDoar}">
+								<f:setPropertyActionListener value="#{campanha}"
+									target="#{realizarDoac.campanhas}" />
+							</h:commandButton>
 						</p:column>
 
-
 					</p:dataTable>
-
-
 
 				</h:panelGrid>
 			</p:outputLabel>

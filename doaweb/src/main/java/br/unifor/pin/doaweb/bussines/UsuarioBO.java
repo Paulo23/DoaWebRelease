@@ -34,8 +34,11 @@ public class UsuarioBO {
 				throw new BOException("CPF já cadastrado. Volte a tela de cadastro e tente novamente.");
 			}
 		}
-		
+		try {
 		usuarioDAO.salvar(usuario);
+		} catch(Exception e){
+			throw new BOException("Não foi possível o cadastro, tente mais tarde.");
+		}
 	}
 
 	public void atualizar(Usuarios usuario) {
