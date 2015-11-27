@@ -87,9 +87,18 @@ public class CampanhasDAO {
 	// Filtra campanha por tipo(Alimentos, Dinheiro, Roupas)
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaCampanhasPorTipo(TipoDoacao doacao) {
+		String jpql = "select c from Campanhas c where c.tipo = :doacao and c.status = 0";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("doacao", doacao);
+		return (List<Campanhas>) query.getResultList();
+	}
+	
+	// Filtra campanha por tipo(Alimentos, Dinheiro, Roupas)
+	@SuppressWarnings("unchecked")
+	public List<Campanhas> buscaCampanhasPorTipoInstituicao(TipoDoacao doacao) {
 		String jpql = "select c from Campanhas c where c.tipo = :doacao";
 		Query query = entityManager.createQuery(jpql);
-		query.setParameter("tipo_campanhas", doacao);
+		query.setParameter("doacao", doacao);
 		return (List<Campanhas>) query.getResultList();
 	}
 }

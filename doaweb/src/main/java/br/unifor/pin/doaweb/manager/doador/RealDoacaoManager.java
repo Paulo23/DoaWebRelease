@@ -15,8 +15,10 @@ import br.unifor.pin.doaweb.bussines.DoacaoBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Doadores;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.enums.StatusCampanha;
 import br.unifor.pin.doaweb.enums.StatusDoacao;
+import br.unifor.pin.doaweb.enums.TipoDoacao;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
@@ -46,6 +48,8 @@ public class RealDoacaoManager {
 	private String op;
 	private String conta;
 
+	private TipoDoacao tipoDeCampanha;
+	
 	private Double valorDac;
 
 	private Campanhas campanhas;
@@ -107,7 +111,17 @@ public class RealDoacaoManager {
 	public void limpaDados() {
 		this.obs = "";
 	}
-
+	
+	// Lista as campanhas por data de íncio
+	public String listarMinhasCampanhasPorFiltro(){
+		ltTodasCampanhas = campanhaBO.buscaCampanhasPorTipo(getTipoDeCampanha());
+		return Navigation.LISTCAMPDOAD;
+	}
+	
+	public TipoDoacao[] getTipoCampanhas() {
+		return TipoDoacao.values();
+	}
+	
 	/*
 	 * GETTS AND SETTS
 	 */
@@ -206,6 +220,14 @@ public class RealDoacaoManager {
 
 	public void setConta(String conta) {
 		this.conta = conta;
+	}
+
+	public TipoDoacao getTipoDeCampanha() {
+		return tipoDeCampanha;
+	}
+
+	public void setTipoDeCampanha(TipoDoacao tipoDeCampanha) {
+		this.tipoDeCampanha = tipoDeCampanha;
 	}
 
 }

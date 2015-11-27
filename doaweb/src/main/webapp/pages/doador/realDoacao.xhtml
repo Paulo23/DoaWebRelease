@@ -17,6 +17,15 @@
 
 			<p:outputLabel>
 
+				<p:outputLabel for="tipo" value="Tipo de campanha:" />
+					<p:selectOneMenu id="tipo" value="#{realizarDoac.tipoDeCampanha}"
+						style="width:125px">
+						<f:selectItems value="#{realizarDoac.tipoCampanhas}" var="g"
+							itemValue="#{g}" itemLabel="#{g.label}" />
+					</p:selectOneMenu>
+					<h:commandButton value="Filtrar"
+				action="#{realizarDoac.listarMinhasCampanhasPorFiltro()}" />
+					
 				<!-- Painel Tabela campanhas -->
 
 				<h:panelGrid columns="3" styleClass="panelgrid">
