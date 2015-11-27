@@ -37,8 +37,8 @@ public class CampanhaBO {
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void excluirCampanha(Campanhas campanha) {
-		campanha = campanhasDAO.buscaCampanhaPorId(campanha.getId());
-		campanhasDAO.excluir(campanha);
+		campanha.setStatus(StatusCampanha.INATIVA);
+		campanhasDAO.atualizar(campanha);
 	}
 
 	//Todas as campanhas de uma instituição
@@ -92,8 +92,8 @@ public class CampanhaBO {
 	public void setStatusCampanhas() {
 		ArrayList<Campanhas> campanhas = (ArrayList<Campanhas>) campanhasDAO.buscaTodasCampanhas();
 		for (Campanhas campanha : campanhas) {
-			if(new Date().after(campanha.getDataTerminoCampanhas()) || StatusCampanha.INATIVA.equals(campanha.getStatus())){
-				campanha.setStatus(StatusCampanha.INATIVA);
+			if(new Date().after(campanha.getDataTerminoCampanhas()) || StatusCampanha.FECHADA.equals(campanha.getStatus())){
+				campanha.setStatus(StatusCampanha.FECHADA);
 				campanhasDAO.atualizar(campanha);
 			} 
 		}

@@ -12,6 +12,7 @@ import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.unifor.pin.doaweb.entity.Doadores;
@@ -24,6 +25,7 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * @since 07/05/2015
  */
 @SessionScoped
+@Scope("session")
 @ManagedBean(name = "segurancaTO")
 @Controller(value = "segurancaTO")
 public class SegurancaTO implements Serializable {

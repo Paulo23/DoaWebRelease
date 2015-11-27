@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
@@ -18,6 +19,7 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * 
  */
 @RequestScoped
+@Scope("request")
 @ManagedBean(name="listUsuario")
 @Component(value="listUsuario")
 public class ListUsuarioManager {

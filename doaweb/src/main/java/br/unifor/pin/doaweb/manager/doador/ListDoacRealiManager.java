@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.DoacaoBO;
@@ -17,6 +18,7 @@ import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
+@Scope("session")
 @ManagedBean(name = "listDoacReal")
 @Component(value = "listDoacReal")
 public class ListDoacRealiManager {
@@ -85,7 +87,7 @@ public class ListDoacRealiManager {
 	}
 
 	public String voltar() {
-		if (doacao.getStatus().equals(StatusDoacao.RECEBIDA)) {
+		if (this.doacao.getStatus().equals(StatusDoacao.RECEBIDA)) {
 			setRecebido(true);
 		} else {
 			setRecebido(false);

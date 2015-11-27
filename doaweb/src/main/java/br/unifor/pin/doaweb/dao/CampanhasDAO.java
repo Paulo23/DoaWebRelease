@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.enums.StatusCampanha;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 
 @Repository
@@ -38,9 +39,11 @@ public class CampanhasDAO {
 	// Busca todas as campanhas de uma determinada instituição
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaCampanhasPorInstituicao(Usuarios instituicao) {
-		String jpql = "select u from Campanhas u where u.instituicao = :instituicao order by u.status, u.dataTerminoCampanhas";
+		String jpql = "select u from Campanhas u where u.instituicao = :instituicao "
+				+ "and u.status != :status order by u.status, u.dataTerminoCampanhas";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("instituicao", instituicao);
+		query.setParameter("status", StatusCampanha.INATIVA);
 		return (List<Campanhas>) query.getResultList();
 	}
 
@@ -59,7 +62,7 @@ public class CampanhasDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
-	
+
 	// Busca todas as campanhas ativas
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscarCampanhasAtivas() {
@@ -70,16 +73,18 @@ public class CampanhasDAO {
 
 	// Filtra por data as campanhas de uma determinada instituição
 	@SuppressWarnings("unchecked")
-	public List<Campanhas> buscaCampanhasPorInstituicaoData(
-			Instituicoes instituicao, Date data) {
-		String jpql = "select c from Campanhas c where c.instituicao = :instituicao and c.dataInicioCampanhas = :data";
+	public List<Campanhas> buscaCampanhasPorInstituicaoData(Instituicoes instituicao, Date data) {
+		String jpql = "select c from Campanhas c where c.instituicao = :instituicao "
+				+ "and c.dataInicioCampanhas = :data and c.status != :status "
+				+ "order by u.status, u.dataTerminoCampanhas";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("instituicao", instituicao);
 		query.setParameter("data", data);
+		query.setParameter("status", StatusCampanha.INATIVA);
 		return (List<Campanhas>) query.getResultList();
 	}
-	
-	//Filtra campanha por tipo(Alimentos, Dinheiro, Roupas)
+
+	// Filtra campanha por tipo(Alimentos, Dinheiro, Roupas)
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaCampanhasPorTipo(TipoDoacao doacao) {
 		String jpql = "select c from Campanhas c where c.tipo = :doacao";

@@ -40,11 +40,11 @@
 
 						<p:column style="width: 55px; text-align: center"
 							headerText="Doar">
-							<h:commandButton id="btDoar" value="Doar"
-								action="#{realizarDoac.preparaDoar}">
+							<p:commandButton id="btDoar" icon="fa fa-plus"
+								title="Realizar Doação" action="#{realizarDoac.preparaDoar}">
 								<f:setPropertyActionListener value="#{campanha}"
 									target="#{realizarDoac.campanhas}" />
-							</h:commandButton>
+							</p:commandButton>
 						</p:column>
 
 					</p:dataTable>

@@ -7,10 +7,12 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
 import br.unifor.pin.doaweb.aspectj.PermitAll;
+import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.dao.DoacaoDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.enums.StatusCampanha;
 import br.unifor.pin.doaweb.enums.StatusDoacao;
 import br.unifor.pin.doaweb.exceptions.BOException;
 
@@ -19,8 +21,17 @@ public class DoacaoBO {
 
 	@Autowired
 	private DoacaoDAO doacaoDAO;
+	
+	@Autowired
+	private CampanhasDAO campanhaDAO;
 
-	public void salvar(Doacao doacao) {
+	public void salvar(Doacao doacao) throws BOException {
+		
+		Campanhas campanha = this.campanhaDAO.buscaCampanhaPorId(doacao.getCampanha().getId());
+		if(StatusCampanha.FECHADA.equals(campanha.getStatus())){
+			throw new BOException("Já passou o prazo de doação para esta campanha.");
+		}
+		
 		doacaoDAO.salvar(doacao);
 	}
 
