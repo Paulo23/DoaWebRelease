@@ -15,7 +15,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Instituicoes;
@@ -28,7 +29,8 @@ import br.unifor.pin.doaweb.to.SegurancaTO;
  * @since 07/05/2015
  */
 @Aspect
-@Component
+@Service
+@Scope("session")
 public class SecurityConfig {
 
 	@Autowired

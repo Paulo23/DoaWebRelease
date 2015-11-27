@@ -7,30 +7,27 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.bussines.DoacaoBO;
-import br.unifor.pin.doaweb.dao.CampanhasDAO;
-import br.unifor.pin.doaweb.dao.DoacaoDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.enums.StatusCampanha;
 import br.unifor.pin.doaweb.enums.StatusDoacao;
-import br.unifor.pin.doaweb.enums.TipoDoacao;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
+@Scope("request")
 @ManagedBean(name = "listCampanha")
 @Component(value = "listCampanha")
 public class ListCampanhaManager {
 
 	@Autowired
 	private CampanhaBO campanhaBO;
-	@Autowired
-	private CampanhasDAO campanhasDAO;
 	@Autowired
 	private DoacaoBO doacaoBO;
 	@Autowired

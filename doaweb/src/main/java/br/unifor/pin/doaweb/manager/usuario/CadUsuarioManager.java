@@ -9,6 +9,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.abstractfactory.UsuarioFactory;
@@ -22,6 +23,7 @@ import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
+@Scope("request")
 @ManagedBean(name = "cadUsuario")
 @Component(value = "cadUsuario")
 public class CadUsuarioManager {

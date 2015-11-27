@@ -12,7 +12,8 @@ import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
@@ -23,7 +24,8 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * @author patrick.cunha
  * @since 07/05/2015
  */
-@Component(value = "segurancaTO")
+@Scope("session")
+@Service(value = "segurancaTO")
 @ManagedBean(name = "segurancaTO")
 @SessionScoped
 public class SegurancaTO implements Serializable {
