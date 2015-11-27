@@ -19,7 +19,7 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * 
  */
 @RequestScoped
-@Scope("request")
+@Scope("session")
 @ManagedBean(name="listUsuario")
 @Component(value="listUsuario")
 public class ListUsuarioManager {

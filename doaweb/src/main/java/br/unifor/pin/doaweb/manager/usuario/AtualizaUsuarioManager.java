@@ -21,7 +21,7 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * 
  */
 @RequestScoped
-@Scope("request")
+@Scope("session")
 @ManagedBean(name = "atualizaUsuario")
 @Component(value = "atualizaUsuario")
 public class AtualizaUsuarioManager {

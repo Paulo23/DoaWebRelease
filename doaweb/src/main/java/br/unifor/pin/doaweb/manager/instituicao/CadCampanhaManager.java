@@ -19,7 +19,7 @@ import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
-@Scope("request")
+@Scope("session")
 @ManagedBean(name = "cadCampanha")
 @Component(value = "cadCampanha")
 public class CadCampanhaManager {

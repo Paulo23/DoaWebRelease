@@ -25,7 +25,7 @@ import br.unifor.pin.doaweb.utils.Navigation;
  * @since 26/06/2015
  */
 @RequestScoped
-@Scope("request")
+@Scope("session")
 @Component(value = "login")
 @ManagedBean(name = "login")
 public class LoginManager {
