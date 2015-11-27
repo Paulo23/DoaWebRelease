@@ -28,7 +28,6 @@ public class ListUsuarioManager {
 	private UsuarioBO usuarioBO;
 	private String nome;
 	private List<Usuarios> usuarios;
-	private Usuarios usuario;
 	
 	public void lista(){
 		
