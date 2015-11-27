@@ -15,28 +15,35 @@
 			<p:messages id="messages" showDetail="true" autoUpdate="true"
 				closable="true" />
 
-			<div>
-				<h:graphicImage library="imgs" name="logodoalivro.jpg" width="200"
-					height="200" styleClass="imagemlogin" />
-				<h:panelGrid columns="3" styleClass="panelgridlogin">
+			<h:graphicImage library="imgs" name="logodoalivro.jpg" width="200"
+				height="200" styleClass="imagemlogin" />
+			<h:outputLabel value="Bem-vindo ao DOAWEB."
+				styleClass="text-bemvindo" />
+			<h:outputLabel styleClass="text-fraseralph"
+				value="Uma das mais belas compensações da vida é que nenhum ser humano" />
+			<h:outputLabel styleClass="text-fraseralph-quebra"
+				value="pode ajudar o outro sem que esteja ajudando a si mesmo." />
+			<h:outputLabel styleClass="text-autor"
+				value="Ralph Waldo Emerson (1803-1882)" />
 
-					<h:outputLabel value="Email:" />
-					<p:inputText id="email" value="#{login.usuario.email}"
-						required="true" requiredMessage="Campo Obrigatório" />
-					<p:message for="email" />
+			<h:panelGrid columns="3" styleClass="panelgridlogin">
 
-					<h:outputLabel value="Senha:" />
-					<p:password id="senha" value="#{login.usuario.senha}"
-						required="true" requiredMessage="Campo Obrigatório" />
-					<p:message for="senha" />
+				<h:outputLabel value="Email:" />
+				<p:inputText id="email" value="#{login.usuario.email}"
+					required="true" requiredMessage="Campo Obrigatório" />
+				<p:message for="email" />
 
-					<p:commandButton value="Entrar" action="#{login.loggar}"
-						ajax="false" />
-					<p:commandLink value="Cadastrar-se" ajax="false" immediate="true"
-						action="#{cadUsuario.preparaSalvar}" />
-					<p:outputLabel value="" />
-				</h:panelGrid>
-			</div>
+				<h:outputLabel value="Senha:" />
+				<p:password id="senha" value="#{login.usuario.senha}"
+					required="true" requiredMessage="Campo Obrigatório" />
+				<p:message for="senha" />
+
+				<p:commandButton value="Entrar" action="#{login.loggar}"
+					ajax="false" />
+				<p:commandLink value="Cadastrar-se" ajax="false" immediate="true"
+					action="#{cadUsuario.preparaSalvar}" />
+				<p:outputLabel value="" />
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>
